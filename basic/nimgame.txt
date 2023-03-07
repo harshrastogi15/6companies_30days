@@ -1,0 +1,24 @@
+Unbounded game
+
+
+Nim sum = XOR of all values is array 
+
+winning state , Nim Sum (NS) = 0;
+
+Initial A started, NS != 0; then A win because now he make is NS = 0;
+
+
+
+void solve(ll t){
+    cin>>n;
+    ll nimsum = 0;
+    f(i,0,n){
+        cin>>a;
+        nimsum ^= a;
+    }
+    if(nimsum==0){
+        cout<<"B wins\n";
+    }else{
+        cout<<"A wins\n";
+    }
+} 
