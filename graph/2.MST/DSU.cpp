@@ -1,7 +1,7 @@
 // Disjoint set union 
 
 
-// vector<int> parent;
+//     vector<int> parent;
 //     vector<int> rank;
     
 //     int findparent(int n){
