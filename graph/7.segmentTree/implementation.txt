@@ -1,0 +1,33 @@
+    static const int len = 2e5 + 1;
+    static const int lengthOfSegmentTree = 4 * len;
+    int values[len];
+    int segtree[lengthOfSegmentTree];
+
+    void construct(int st, int en, int node){
+        if(st == en){
+            segtree[node]=values[st];
+        }
+        int mid = st + (en-st)/2;
+        construct(st,mid,2*node+1);
+        construct(mid+1,en,2*node+2);
+        segtree[node] = max(segtree[2*node+1],segtree[2*node+2]);
+    }
+
+    int query(int st, int en, int sq, int eq, int node){
+        if(eq<st || en<sq){return -1;}
+        if(sq<=st && en<=eq){return segtree[node];}
+        int mid = st + (en-st)/2;
+        return max(query(st,mid,sq,eq,2*node+1),query(mid+1,en,sq,eq,2*node+2));
+    }
+
+    void update(int st , int en, int idx, int node){
+        if(idx<st || en<idx){return ;}
+        if( st==idx && en==idx ){
+            segtree[node] = values[idx];
+            return ;
+        }
+        int mid = st + (en - st)/2;
+        update(st,mid,idx,2*node+1);
+        update(mid+1,en,idx,2*node+2);
+        segtree[node] = max(segtree[2*node+1],segtree[2*node+2]);
+    }
