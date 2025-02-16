@@ -1,0 +1,23 @@
+A Eulerian path is a path in a graph that passes through all of its edges exactly once. A Eulerian cycle is a Eulerian path that is a cycle.
+
+an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of a Eulerian cycle). In addition, of course, the graph must be sufficiently connected (i.e., if you remove all isolated vertices from it, you should get a connected graph).
+
+For directed graph, there are only two node present in graph:
+1st : inDegree + 1 = outDegree
+2nd : inDegree = outDegree + 1
+and other : inDegree = outDegree
+
+take odd degree or 1st one as first node and start dfs with it.
+
+iterative:
+    stack St;
+    put start vertex in St;
+    until St is empty
+    let V be the value at the top of St;
+    if degree(V) = 0, then
+        add V to the answer;
+        remove V from the top of St;
+    otherwise
+        find any edge coming out of V;
+        remove it from the graph;
+        put the second end of this edge in St;
